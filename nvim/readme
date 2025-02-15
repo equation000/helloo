@@ -1,0 +1,16 @@
+1️⃣ Neovim 启动，执行 `init.lua`
+    ├── 先执行基础配置文件（自己写的 Lua 文件）
+    │    ├── `require("options")`   # 载入 Neovim 选项
+    │    ├── `require("keymaps")`   # 载入快捷键
+    │    ├── `require("colorscheme")`  # 设置主题
+    │    ├── `require("lsp")`   # 配置 LSP 服务器
+    │    ├── ...
+    │
+    ├── 运行 `plugins.lua`
+    │    ├── `lazy.nvim` 负责下载并安装插件
+    │    ├── `nvim-cmp` → 触发 `require("config.nvim-cmp")`
+    │    ├── `lspconfig` → 触发 `require("lsp")`
+    │    ├── 其他插件 ...
+    │
+2️⃣ Neovim 启动完成 ✅
+init是用来执行所有的插件的。如你自己写的lua文件（如keymaps）或者你通过lazy（下载完进行更改）下载的文件。

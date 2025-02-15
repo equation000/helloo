@@ -14,7 +14,6 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -115,10 +114,16 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# history 只显示 10条常用命令
+alias his="history | awk '{\$1=\"\";print substr(\$0,2)}' | sort | uniq -c | sort -nr | head -n 10"
+
+#vpn global config
 export http_proxy="http://127.0.0.1:20171"
 export https_proxy="http://127.0.0.1:20171"
 export all_proxy="socks5://127.0.0.1:20170"
-#brew path 
+
+#brew global config  
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
